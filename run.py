@@ -3,6 +3,8 @@ from pathlib import Path
 import re
 import sys
 from __banner.banner import banner
+import pause
+from datetime import datetime
 
 ######### AUTHOR - @AmmeySaini #########
 ######### Github Repo -  https://github.com/AmmeySaini/Realme-AutoBuy #########
@@ -49,7 +51,13 @@ def main():
 			exit()
 	if added == 1:
 		print('Cookie files added')
-		input('Once sale begins press enter key to start: ')
+		s_year = input('Year as YYYY: ')
+		s_month = input('Month as M: ')
+		s_date = input('Date as D: ')
+		s_hour = input('Hour as H: ')
+		s_minute = input('Minute as M: ')	
+		pause.until(datetime(int(s_year), int(s_month), int(s_date), int(s_hour), int(s_minute), 0))
+		print('\nNext step will be proceed at your provided time. Wait till then... ')
 		for i in cookie_list:
 			os.system('start cmd /k python realme.py -c ' + i + ' -id ' + str(product_id))
 
